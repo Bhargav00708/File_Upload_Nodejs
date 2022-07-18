@@ -3,12 +3,13 @@ const path = require("path");
 const express = require("express");
 const multer = require("multer");
 const cors = require("cors");
+const ip = require("ip");
 
 const app = express();
 
 // This middleware is used to enable Cross Origin Resource Sharing This sets Headers to allow access to our client application
 app.use(cors());
-app.use('/public', express.static(process.cwd() + '/public'));
+app.use(express.static('public'))
 // Storage Engin That Tells/Configures Multer for where (destination) and how (filename) to save/upload our files
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -39,4 +40,6 @@ app.post("/multiple", upload.array("images", 3), (req, res) => {
   res.send("Multiple Files Upload Success");
 });
 
-app.listen(5000);
+const listen = app.listen(process.env.PORT || 3000, () => {
+  console.log(`Your app is listening on http://${ip.address()}:${listen.address().port}`)
+})

@@ -8,7 +8,7 @@ body {
   text-align: center;
 }
 
-.container {
+.container-fluid {
   padding: 0;
   margin-top: 40px;
 }
@@ -39,4 +39,21 @@ input#button {
   padding: 20px;
   width: 60%;
   min-width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+#discription
+{
+  text-align: center;
+}
+
+.bgColor
+{
+  background-color: cadetblue;
+}
+
+.container-fluid
+{
+  font-family: 'Russo One';
 }
